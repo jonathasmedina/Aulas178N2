@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "696561349865",
+    "project_id": "aula178-7491b",
+    "storage_bucket": "aula178-7491b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696561349865:android:2a01f9e32c3aa39f446c78",
+        "android_client_info": {
+          "package_name": "com.example.aulas178n2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "696561349865-r5bt4pf7dr8f86i4vgf21mmc82ukkaah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU5uu_FIQ4PClw9Lc8hOgdRSkrA0HN_KQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "696561349865-r5bt4pf7dr8f86i4vgf21mmc82ukkaah.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
