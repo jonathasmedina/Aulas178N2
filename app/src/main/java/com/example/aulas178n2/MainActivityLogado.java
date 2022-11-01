@@ -10,12 +10,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivityLogado extends AppCompatActivity {
 
     Button btlogout, btSalva;
     String nome, email;
     EditText nomeEd, emailEd;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +31,23 @@ public class MainActivityLogado extends AppCompatActivity {
         nomeEd  = findViewById(R.id.editSalvaNome);
         emailEd  = findViewById(R.id.editSalvaEmail);
 
+        iniciarFirebase();
+
         btSalva.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nome = nomeEd.getText().toString();
                 email = emailEd.getText().toString();
+
+                Pessoa p = new Pessoa();
+                p.setEmail(email);
+                p.setNome(nome);
+
+
+                databaseReference.
+                        child("Pessoa").
+                        child(p.getNome()).
+                        setValue(p);
 
             }
         });
@@ -46,6 +62,15 @@ public class MainActivityLogado extends AppCompatActivity {
                 startActivity(new Intent(MainActivityLogado.this, MainActivity.class));
             }
         });
+
+    }
+
+    private void iniciarFirebase() {
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        //persistir dados offline - apenas uma vez no projeto
+        firebaseDatabase.setPersistenceEnabled(true);
+        databaseReference = firebaseDatabase.getReference();
+
 
     }
 }
