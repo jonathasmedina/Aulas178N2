@@ -9,7 +9,9 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     Button btLogar;
     TextView tv1Criar;
     FirebaseAuth mAuthLoga;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
         edSenha = findViewById(R.id.editTextSenha);
         btLogar = findViewById(R.id.buttonLogar);
         tv1Criar = findViewById(R.id.textViewCriarUsuario);
+        progressBar  = findViewById(R.id.progressBar);
+
+        progressBar.setVisibility(View.GONE);
+
 
         mAuthLoga = FirebaseAuth.getInstance();
 
@@ -49,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         btLogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
                 String email = edEmail.getText().toString();
                 String senha = edSenha.getText().toString();
 
@@ -63,8 +71,16 @@ public class MainActivity extends AppCompatActivity {
                                 );
                                 startActivity(i);
                             }
+
+                            //btLogar.setEnabled(false);
+
+                            else{
+                                Toast.makeText(MainActivity.this, "Erro ao logar", Toast.LENGTH_LONG).show();
+
+                            }
                         }
                     });
+                    progressBar.setVisibility(View.GONE);
                 }
 
                 // Toast.makeText(getApplicationContext(),"O e-mail digitado foi: " + email +" e a senha digitada foi: " + senha,Toast.LENGTH_LONG).show();
